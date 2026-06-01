@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://bbphwlvm8swwx"]
+
+[ext_resource type="PackedScene" uid="uid://bsvjy28jyel44" path="res://Escenas/Escenas_Individuales/jugador.tscn" id="1_o7g25"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_o7g25"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_s3xit"]
+sky_material = SubResource("ProceduralSkyMaterial_o7g25")
+
+[sub_resource type="Environment" id="Environment_wgecj"]
+background_mode = 2
+sky = SubResource("Sky_s3xit")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_308ex"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_o7g25"]
+
+[node name="EscenaPruebas" type="Node3D" unique_id=286368405]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1882605318]
+environment = SubResource("Environment_wgecj")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=91581207]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Piso" type="StaticBody3D" parent="." unique_id=1709556259]
+transform = Transform3D(9.076651, 0, 0, 0, 1, 0, 0, 0, 18.474495, 0, 0, 0)
+
+[node name="MeshPiso" type="MeshInstance3D" parent="Piso" unique_id=945835948]
+mesh = SubResource("BoxMesh_308ex")
+
+[node name="Colision" type="CollisionShape3D" parent="Piso" unique_id=1727526738]
+shape = SubResource("BoxShape3D_o7g25")
+
+[node name="Jugador" parent="." unique_id=2070046314 instance=ExtResource("1_o7g25")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.056641, 0)
